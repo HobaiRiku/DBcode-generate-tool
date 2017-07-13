@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/OneDrive/中软创新/学习资料/oracle数据库/JDBC/ojdbc14.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
