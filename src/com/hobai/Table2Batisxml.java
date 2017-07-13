@@ -1,4 +1,4 @@
-package com.hobai.main;
+package com.hobai;
 
 import java.io.File;
 import java.io.FileOutputStream;
