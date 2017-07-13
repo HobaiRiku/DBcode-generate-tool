@@ -1,4 +1,4 @@
-package com.util;
+package com.hobai.util;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

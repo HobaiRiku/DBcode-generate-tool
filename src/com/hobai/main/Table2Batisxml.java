@@ -1,4 +1,4 @@
-package com;
+package com.hobai.main;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -10,9 +10,10 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.entity.CTableProperty;
-import com.util.DbconnUtil;
-import com.util.StringUtil;
+
+import com.hobai.entity.CTableProperty;
+import com.hobai.util.DbconnUtil;
+import com.hobai.util.StringUtil;
 /**
  * 
  * @Title: Table2Batisxml.java

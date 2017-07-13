@@ -1,13 +1,14 @@
-package com;
+package com.hobai.main;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Map;
-import com.util.DataBaseType;
-import com.util.DbconnUtil;
-import com.util.StringUtil;
+
+import com.hobai.util.DataBaseType;
+import com.hobai.util.DbconnUtil;
+import com.hobai.util.StringUtil;
 /**
  * 
  * @Title: Table2Pojo.java
