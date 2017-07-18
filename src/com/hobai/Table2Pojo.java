@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.hobai.util.DataBaseType;
 import com.hobai.util.DbconnUtil;
+import com.hobai.util.FileUtil;
 import com.hobai.util.StringUtil;
 /**
  * 
@@ -25,14 +26,38 @@ public class Table2Pojo {
     //数据库连接配置
     public static final String dburl = "127.0.0.1:1521";
     public static final String dbname = "XE";
-    public static final String user = "u01";
-    public static final String name = "u01";
+    public static final String user = "u02";
+    public static final String name = "u02";
     
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
     	//表名称
-    	String tableName = "T_STUDENT";        
+    	String tableName = "T_4S_DEPT";        
+    	//数据库JDBC连接
     	Connection con = getConnection();
-        table2pojo(con, tableName.toUpperCase(), DbconnUtil.ORACLE, "" , true);
+    	//文件生成目标路径
+    	String path="E:\\Desktop";
+    	//类文件所属包名
+    	String pakege="com.zrcx.entity";
+    	//生成函数
+        table2pojo(con, pakege,tableName.toUpperCase(), DbconnUtil.ORACLE, path , true);
+    }
+    /**
+     * 
+     * @Description: 封装的生成Class文件方法
+     * @param pakege 包全称
+     * @param tableName 表全称
+     * @param path 生成文件目标
+     * @throws ClassNotFoundException
+     * @throws SQLException   
+     * void  
+     * @throws
+     * @author Hobai Riku
+     * @date 2017年7月18日 上午10:03:42
+     */
+    public static void generateClassFlie(String dburl,  String dbname ,String user ,String pwd ,String pakege,String tableName, String classpath ) throws ClassNotFoundException, SQLException{
+    	Connection con=DbconnUtil.getConnection(dburl, dbname, user, pwd, DbconnUtil.ORACLE);
+    	table2pojo(con, pakege,tableName.toUpperCase(), DbconnUtil.ORACLE, classpath , true);
+    	
     }
 
    /**
@@ -70,7 +95,7 @@ public class Table2Pojo {
   * @author Hobai Riku
   * @date 2016年7月13日 上午11:51:09
   */
-    public static String table2pojo(Connection connection, String tableName,
+    public static String table2pojo(Connection connection, String pakege ,String tableName,
             int dbType, String path , boolean isCreateFile) throws SQLException {
     	//读取到字段注释
     	Map<String,String> commentMap = DataBaseType.getColumnComment(tableName, connection);
@@ -85,6 +110,8 @@ public class Table2Pojo {
         StringBuffer sb = new StringBuffer();
         tableName = tableName.substring(0, 1).toUpperCase() 
         		   +tableName.subSequence(1, tableName.length());
+        sb.append("package "+pakege+";");
+        sb.append(LINE);
         sb.append("public class " + StringUtil.getClassName(tableName) + " {");
         sb.append(LINE);
         String fieldType = "";
@@ -140,11 +167,12 @@ public class Table2Pojo {
             sb.append(LINE);            
         }
         sb.append("}");
-        System.out.println(sb.toString());
         
-//        if(isCreateFile){
-//            FileUtils.stringToFile(null,tableName +".java" , sb.toString());
-//        }
+        
+        if(isCreateFile){
+           FileUtil.toFile(path,StringUtil.getClassName(tableName) , sb.toString());
+           System.out.println("成功生成："+StringUtil.getClassName(tableName)+".java"+"路径:"+path);
+        }
         return null;
     }
 

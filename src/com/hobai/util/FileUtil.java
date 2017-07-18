@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
  * 
  * @Title: FileUtil.java
  * @Package com.util
- * @Description: 文件保存处理工具类
+ * @Description: 文件保存处理工具类(将字符串保存为文件)
  * @author Hobai Riku
  * @date 2016年7月13日 上午11:49:34
  * @version 1.0

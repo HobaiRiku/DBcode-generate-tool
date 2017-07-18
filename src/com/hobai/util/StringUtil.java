@@ -100,6 +100,7 @@ public class StringUtil {
 	 * @param columnName
 	 * @return
 	 */
+	
 	public static String getClassName(String tableName) {
 		
 		tableName = tableName.toLowerCase();
@@ -109,8 +110,13 @@ public class StringUtil {
 			if (index == -1) {
 				break;
 			}
-			temp = tableName.substring(index + 1, index + 2);
-			tableName = tableName.replaceAll("_" + temp, temp.toUpperCase());
+			//去除所有"_"，并取最后一个“_” 后的名称
+			temp = tableName.substring(index + 1, tableName.length());
+			tableName=temp;
+			//取出所有"_"，保留其他字符
+			/*temp = tableName.substring(index + 1, index+2);
+			tableName = tableName.replaceAll("_" + temp, temp.toUpperCase());*/	
+		
 
 			// System.out.println("==:" + columnName);
 		}
@@ -118,8 +124,8 @@ public class StringUtil {
 		return tableName.replaceFirst(tableName.substring(0, 1), tableName.substring(0, 1).toUpperCase());
 	}
 
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		String t = StringUtil.getFeildName("RULE_ID_II_AA");
 		System.out.println(t);
-	}
+	}*/
 }

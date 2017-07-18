@@ -54,6 +54,28 @@ public class Table2Batisxml {
 		generateMapperXMLFile(mapperFileDir,con,tableName,sequenceName,packetPath,className);
 		
 	}
+	/**
+	 * 
+	 * @Description: 封装的生成mapper文件函数
+	 * @param tableName 表名全称
+	 * @param mapperFileDir 文件生成目标
+	 * @param packetPath   包路径
+	 * void  
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 * @throws
+	 * @author Hobai Riku
+	 * @date 2017年7月18日 上午10:09:23
+	 */
+	public static void generateMapperFile(String dburl,  String dbname ,String user ,String pwd ,String tableName ,String mapperFileDir ,String packetPath ) throws ClassNotFoundException, SQLException{
+		//获取类名（首字母大写）
+		String className= StringUtil.getClassName(tableName);
+		//获取类小写名
+		String name=className.toLowerCase();
+		String sequenceName = "seq_t_"+name;
+		Connection con=DbconnUtil.getConnection(dburl, dbname, user, pwd, DbconnUtil.ORACLE);
+		generateMapperXMLFile(mapperFileDir,con,tableName,sequenceName,packetPath,className);
+	}
 	
    /**
     * 
