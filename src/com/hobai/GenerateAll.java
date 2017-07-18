@@ -22,7 +22,7 @@ public class GenerateAll {
     //dao生成目标目录
     public static final String daopath=workspacepath+"src\\"+packetPath+"\\dao\\";
     //表列表
-    public static final String[] tableNames={"T_4S_DEPT"};
+    public static final String[] tableNames={"T_4S_FITTINGS_INORDER"};
   
 	public static void main(String[] args) {
 		//创建entity文件夹

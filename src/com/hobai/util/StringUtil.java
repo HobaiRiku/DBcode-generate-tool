@@ -100,26 +100,38 @@ public class StringUtil {
 	 * @param columnName
 	 * @return
 	 */
-	
+	public static void main(String[] args) {
+		String a=getClassName("T_4S_FITTINGS_INORDER");
+		System.out.println(a);
+	}
 	public static String getClassName(String tableName) {
 		
 		tableName = tableName.toLowerCase();
 		String temp = "";
+		int i=2;
+		while (i>0) {
+			int index = tableName.indexOf("_");
+			i=i-1;
+			if (index == -1) {
+				break;
+			}
+			//去除所有"_"，去除表名前两位单词
+			temp = tableName.substring(index + 1, tableName.length());
+			tableName=temp;
+
+			// System.out.println("==:" + columnName);
+		}
 		while (true) {
 			int index = tableName.indexOf("_");
 			if (index == -1) {
 				break;
 			}
-			//去除所有"_"，并取最后一个“_” 后的名称
-			temp = tableName.substring(index + 1, tableName.length());
-			tableName=temp;
-			//取出所有"_"，保留其他字符
-			/*temp = tableName.substring(index + 1, index+2);
-			tableName = tableName.replaceAll("_" + temp, temp.toUpperCase());*/	
-		
-
-			// System.out.println("==:" + columnName);
+			//取出所有"_"，保留其他字符,并以命名规范保存
+			temp = tableName.substring(index + 1, index+2);
+			tableName = tableName.replaceAll("_" + temp, temp.toUpperCase());
+			
 		}
+		
 		// 首字母大字
 		return tableName.replaceFirst(tableName.substring(0, 1), tableName.substring(0, 1).toUpperCase());
 	}
