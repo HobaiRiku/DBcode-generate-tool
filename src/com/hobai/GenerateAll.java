@@ -22,8 +22,16 @@ public class GenerateAll {
     //dao生成目标目录
     public static final String daopath=workspacepath+"src\\"+packetPath+"\\dao\\";
     //表列表
-    public static final String[] tableNames={"T_4S_FITTINGS_INORDER"};
-  
+    public static final String[] tableNames={"T_4S_SUPPLIER"};
+  /**
+   * 
+   * @Description: 生成全部文件就点这里
+   * @param args   
+   * void  
+   * @throws
+   * @author Hobai Riku
+   * @date 2017年7月18日 下午4:38:45
+   */
 	public static void main(String[] args) {
 		//创建entity文件夹
 				File entityPath = new File(classpath);  

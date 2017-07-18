@@ -137,6 +137,7 @@ public class Table2Pojo {
         //字段的SET，GET方法
         for (int i = 1; i <= columnCount; i++) {
         	fieldType = md.getColumnTypeName(i);
+        	scale = md.getScale(i);
         	precision = md.getPrecision(i);
         	fieldName = md.getColumnName(i);
             sb.append(TAB);

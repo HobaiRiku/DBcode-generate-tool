@@ -298,7 +298,7 @@ public class Table2Batisxml {
 
 				String entityFieldName = entityName + "." + cTableProperty.getFieldName();
 				if ("java.lang.String".equalsIgnoreCase((cTableProperty.getFieldTypeName()))) {
-					osw.write(INDENT_3 + "<if test=\"" + entityName + " != null and " + entityFieldName + " != null and " + entityFieldName + " != '' \">  " + NEWLINE);
+					osw.write(INDENT_3 + "<if test=\"" + entityName + " != null and " + entityFieldName + " != null and " + entityFieldName + " != '' and "+entityFieldName + " != 0 and "+entityFieldName + " != 0.0 \">  " + NEWLINE);
 					osw.write(INDENT_4 + "and " + cTableProperty.getColumnName() + " = #{" + entityFieldName + "}" + NEWLINE);
 					osw.write(INDENT_3 + "</if>" + NEWLINE);
 					
@@ -317,7 +317,7 @@ public class Table2Batisxml {
 					osw.write(INDENT_3 + "</if>" + NEWLINE);
 
 				}else {
-					osw.write(INDENT_3 + "<if test=\"" + entityName + " != null and " + entityFieldName + " != null \">  " + NEWLINE);
+					osw.write(INDENT_3 + "<if test=\"" + entityName + " != null and " + entityFieldName + " != null and " + entityFieldName + " != '' and "+entityFieldName + " != 0 and "+entityFieldName + " != 0.0 \">  " + NEWLINE);
 					osw.write(INDENT_4 + "and " + cTableProperty.getColumnName() + " = #{" + entityFieldName + "}" + NEWLINE);
 					osw.write(INDENT_3 + "</if>" + NEWLINE);
 				}
